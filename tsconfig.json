@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["element-plus/global"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
