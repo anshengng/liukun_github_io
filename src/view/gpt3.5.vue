@@ -15,7 +15,7 @@ const submit = async () => {
         {{ answer }}
     </div>
     <div class="flex flex-col">
-        <textarea v-model=content cols="100" rows="4" class="px-4 border-2 py-1"></textarea>
+        <textarea v-model=content class="w-[300px] md:w-[600px] md:h-[100px]  px-4 border-2 py-1"></textarea>
         <button @click="submit" class="my-2">发送</button>
     </div>
 </template>
