@@ -1,22 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { send } from '../utils/chat';
+import { sendByfour } from '../utils/chat';
 import { ElMessage } from 'element-plus';
 
 const content = ref('');
 const answer = ref('')
-
-const submit =  async () => {
+const submit = async () => {
     ElMessage({
-        type: 'success',
         message: '发送成功',
+        type: 'success'
     })
-    answer.value = '正在思考中...'
-    const result = await send(content.value);
+    const result = await sendByfour(content.value);
     answer.value = result.data.choices[0].message.content;
     content.value = ''
 }
-
 </script>
 <template>
     <div id="answer" class="h-[400px] w-[300px]  md:w-[600px] md:h-[300px] overflow-y-auto ">

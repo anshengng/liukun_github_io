@@ -8,6 +8,10 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/gpt3',
         component: ()=>import('../view/gpt3.5.vue')
+    },
+    {
+        path: '/gpt4',
+        component: ()=>import('../view/gpt4.vue')
     }
 ];
 
