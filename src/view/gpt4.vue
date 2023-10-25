@@ -10,6 +10,7 @@ const submit = async () => {
         message: '发送成功',
         type: 'success'
     })
+    answer.value = '正在思考中...'
     const result = await sendByfour(content.value);
     answer.value = result.data.choices[0].message.content;
     content.value = ''

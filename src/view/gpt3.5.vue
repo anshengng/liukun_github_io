@@ -13,8 +13,10 @@ const submit =  async () => {
     })
     answer.value = '正在思考中...'
     const result = await send(content.value);
-    answer.value = result.data.choices[0].message.content;
-    content.value = ''
+    // answer.value = result.data.choices[0].message.content;
+    // content.value = ''
+    console.log(result);
+        
 }
 
 </script>
