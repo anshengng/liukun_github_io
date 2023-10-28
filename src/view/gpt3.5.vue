@@ -6,7 +6,7 @@ import { ElMessage } from 'element-plus';
 const content = ref('');
 const answer = ref('')
 
-const submit =  async () => {
+const submit = async () => {
     ElMessage({
         type: 'success',
         message: '发送成功',
@@ -15,7 +15,7 @@ const submit =  async () => {
     const result = await send(content.value);
     answer.value = result.data.choices[0].message.content;
     content.value = ''
-        
+
 }
 
 </script>
