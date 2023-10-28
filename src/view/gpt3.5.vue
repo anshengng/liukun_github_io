@@ -7,14 +7,17 @@ const content = ref('');
 const answer = ref('')
 
 const submit = async () => {
+    content.value = 'hello'
+
     ElMessage({
         type: 'success',
         message: '发送成功',
     })
     answer.value = '正在思考中...'
-    const result = await send(content.value);
-    answer.value = result.data.choices[0].message.content;
-    content.value = ''
+    // const result = await send(content.value);
+    // answer.value = result.data.choices[0].message.content;
+    // content.value = ''
+    await send(content.value);
 
 }
 
