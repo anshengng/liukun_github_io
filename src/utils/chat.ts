@@ -45,17 +45,23 @@ export async function send(content: string) {
     .then(response => {
         const reader = response.body!.getReader();
         const decoder = new TextDecoder();
+        let buffer = '';
     
         function read():any {
             return reader.read().then(({ done, value }) => {
                 if (done) {
+                    console.log('Request completed');
                     return;
                 }
-                console.log(decoder.decode(value));
+    
+                buffer += decoder.decode(value);
+                const responses = parseResponses(buffer);
+                console.log(responses);
                 
-                // const text = decoder.decode(value) as any;
-                // results += text.choices[0].delta.content;
-                // console.log(text);
+                if (responses) {
+                    console.log(responses);
+                    buffer = '';
+                }
     
                 return read();
             });
@@ -67,11 +73,38 @@ export async function send(content: string) {
         console.error('Error:', error);
     });
     
-    
-
-
 }
 
+/**
+ * 解析buffer
+ * @param buffer 
+ * @returns 
+ */
+function parseResponses(buffer:any) {
+    const lines = buffer.split('\n');
+    const responses = [];
+
+    for (let i = 0; i < lines.length - 1; i++) {
+        const line = lines[i].trim();
+
+        if (line) {
+            try {
+                const response = JSON.parse(line);
+                responses.push(response);
+            } catch (error) {
+                console.error('Failed to parse response:', error);
+            }
+        }
+    }
+
+    return responses;
+}
+
+
+
+/***
+ * gpt4.0
+ */
 export async function sendByfour(content: string) {
     const res = await axios({
         url: 'https://api.chatanywhere.com.cn/v1/chat/completions',

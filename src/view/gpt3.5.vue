@@ -3,12 +3,10 @@ import { ref } from 'vue';
 import { send } from '../utils/chat';
 import { ElMessage } from 'element-plus';
 
-const content = ref('');
+const content = ref('hello');
 const answer = ref('')
 
 const submit = async () => {
-    content.value = 'hello'
-
     ElMessage({
         type: 'success',
         message: '发送成功',
