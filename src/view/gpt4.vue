@@ -5,15 +5,14 @@ import { ElMessage } from 'element-plus';
 
 const content = ref('');
 const answer = ref('')
+
 const submit = async () => {
     ElMessage({
         message: '发送成功',
         type: 'success',
     })
-    answer.value = '正在思考中...'
-    const result = await sendByfour(content.value);
-    answer.value = result.data.choices[0].message.content;
-    content.value = ''
+    await sendByfour(content.value, answer);
+    answer.value = ''
 }
 </script>
 <template>

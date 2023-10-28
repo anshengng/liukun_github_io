@@ -11,12 +11,12 @@ const submit = async () => {
         type: 'success',
         message: '发送成功',
     })
-    answer.value = '正在思考中...'
-    // const result = await send(content.value);
-    // answer.value = result.data.choices[0].message.content;
-    // content.value = ''
-    await send(content.value);
+    await send(content.value, answer);
+    answer.value = ''
+}
 
+const enterHandler = ()=>{
+    submit()
 }
 
 </script>
@@ -25,8 +25,8 @@ const submit = async () => {
         {{ answer }}
     </div>
     <div class="flex flex-col">
-        <textarea v-model=content class="w-[300px] my-2 md:w-[600px] md:h-[100px]  px-4 border-2 py-1"></textarea>
-        <button @click="submit" class=" border-0 focus:outline-none ">发送</button>
+        <textarea v-model=content class="w-[300px] my-2 md:w-[600px] md:h-[100px]  px-4 border-2 py-1" @keydown.enter="enterHandler"></textarea>
+        <button @click="submit" class=" border-0 focus:outline-none">发送</button>
     </div>
 </template>
 
