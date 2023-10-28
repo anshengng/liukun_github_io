@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { Ref } from 'vue';
 
 export async function send(content: string, answer: Ref<string>) {
