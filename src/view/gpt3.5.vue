@@ -15,7 +15,7 @@ const submit =  async () => {
     const result = await send(content.value);
     answer.value = result.data.choices[0].message.content;
     content.value = ''
-        
+
 }
 
 </script>
